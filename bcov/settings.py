@@ -25,7 +25,7 @@ SECRET_KEY = 'w&m$8-(9-m_l0z5(v#qj$1+)sie=n!4y2o#qt)ym%@2tuntmt='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-191-22-177.us-west-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['ec2-54-191-22-177.us-west-2.compute.amazonaws.com', 'localhost']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'simlive',
 ]
 
 MIDDLEWARE = [
@@ -92,9 +94,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
