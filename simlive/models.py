@@ -7,9 +7,9 @@ class BCAccount(models.Model):
    accountId = models.CharField(max_length=200)
    clientId = models.CharField(max_length=200)
    clientSecret = models.CharField(max_length=200)
-   liveAccountId = models.CharField(max_length=200)
-   liveApiToken = models.CharField(max_length=200)
-   liveClippingCreds = models.CharField(max_length=200)
+   liveAccountId = models.CharField(max_length=200, null=True, blank=True)
+   liveApiToken = models.CharField(max_length=200, null=True, blank=True)
+   liveClippingCreds = models.CharField(max_length=200, null=True, blank=True)
 
    def __str__(self):
        return self.name
@@ -55,7 +55,7 @@ class DayBlock(models.Model):
 class Video(models.Model):
     title = models.CharField(max_length=200)
     bcAccount = models.ForeignKey(BCAccount, on_delete=models.DO_NOTHING,)
-    video_id = models.CharField(max_length=20)
+    video_id = models.CharField(max_length=20) # From video cloud
     duration = models.IntegerField()
     description = models.TextField()
     path = models.CharField(max_length=200) # File system path to video.

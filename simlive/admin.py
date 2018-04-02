@@ -3,6 +3,7 @@ from .models import BCAccount, Channel, Video, DayBlock, ProgramBlock
 
 admin.site.register(BCAccount)
 admin.site.register(Channel)
-admin.site.register(Video)
+# Don't expose vidoe to the admin interface for now - might want to allow deletes later.
+# admin.site.register(Video)
 admin.site.register(DayBlock)
 admin.site.register(ProgramBlock)
