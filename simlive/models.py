@@ -56,7 +56,7 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     bcAccount = models.ForeignKey(BCAccount, on_delete=models.DO_NOTHING,)
     video_id = models.CharField(max_length=20) # From video cloud
-    duration = models.IntegerField()
+    duration = models.IntegerField() # duration in milliseconds.
     description = models.TextField()
     path = models.CharField(max_length=200) # File system path to video.
 

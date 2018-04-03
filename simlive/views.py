@@ -24,6 +24,7 @@ def video_list(request):
     """
     List all code snippets, or create a new snippet.
     """
+    print ("In video_list")
     if request.method == 'GET':
         videos = Video.objects.all()
         serializer = VideoSerializer(videos, many=True)
@@ -31,6 +32,7 @@ def video_list(request):
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
+        print (data)
         serializer = VideoSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -43,6 +45,7 @@ def video_detail(request, pk):
     """
     Retrieve, update or delete a code snippet.
     """
+    print ("In video_detail")
     try:
         video = Video.objects.get(pk=pk)
     except Video.DoesNotExist:
