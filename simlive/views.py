@@ -1,10 +1,26 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
+from django.template import loader
 from rest_framework.parsers import JSONParser
 from simlive.models import BCAccount, Video
 from simlive.serializers import BCAccountSerializer, VideoSerializer
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
+
+def index(request):
+    accounts = BCAccount.objects.all()
+    context = {'accounts': accounts}
+    return render(request, 'simlive/index.html', context)
+
+
+def account_detail(request, account_id):
+    account = get_object_or_404(BCAccount, pk=account_id)
+    channels = account.channel.all()
+    return render(request, 'simlive/account_detail.html', {'account': account, 'channels': channels})
+
+
+# API Endpoints ********************************************
 def bcaccount_list(request):
     """
     List all code snippets, or create a new snippet.
@@ -13,11 +29,6 @@ def bcaccount_list(request):
         accounts = BCAccount.objects.all()
         serializer = BCAccountSerializer(accounts, many=True)
         return JsonResponse(serializer.data, safe=False)
-
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the simlive index.")
-
 
 @csrf_exempt
 def video_list(request):

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimLive</title>
+</head>
+<body>
+<h1>Account Detail</h1>
+<h2>{{ account }}</h2>
+<h3>Channels</h3>
+    {% for channel in channels %}
+        <li> <a href="/simlive/{{ account.id }}" > {{ channel.name }}</a></li>
+    {% endfor %}
+
+<form method="get" action="{% url 'simlive:account_detail' account.id %}">
+    <button type="submit">Create New Channel</button>
+</form>
+</body>
+</html>

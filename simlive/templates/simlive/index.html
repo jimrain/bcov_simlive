@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimLive</title>
+</head>
+<body>
+    <h1>Available Accounts</h1>
+    {% for account in accounts %}
+        <li> <a href="{% url 'simlive:account_detail' account.id %}" > {{ account.name }}</a></li>
+    {% endfor %}
+</body>
+</html>

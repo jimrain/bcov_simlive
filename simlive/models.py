@@ -17,7 +17,7 @@ class BCAccount(models.Model):
 
 class Channel(models.Model):
     name = models.CharField(max_length=200)
-    bcAccount = models.ForeignKey(BCAccount, on_delete=models.DO_NOTHING,)
+    bcAccount = models.ForeignKey(BCAccount, related_name='channel', on_delete=models.DO_NOTHING,)
     start_time = models.DateTimeField()
     content_dir = models.CharField(max_length=200)
     smil_file = models.CharField(max_length=200)
